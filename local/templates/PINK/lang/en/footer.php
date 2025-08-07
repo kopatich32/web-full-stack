@@ -1,0 +1,1 @@
+<?$MESS['FOOTER_CONTACT_INFO'] = 'Contact info';
