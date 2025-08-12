@@ -6,7 +6,7 @@ $asset = Asset::getInstance();
 <!DOCTYPE html>
 <html lang="<?=LANGUAGE_ID?>">
 <head>
-    <title>Внутренняя</title>
+    <title><?$APPLICATION->ShowTitle()?></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8" />
     <meta name="author" content="">
@@ -24,12 +24,9 @@ $asset = Asset::getInstance();
     <link rel="icon" type="image/vnd.microsoft.icon" href="<?=SITE_TEMPLATE_PATH?>/favicon.ico">
     <link rel="shortcut icon" href="<?=SITE_TEMPLATE_PATH?>/favicon.ico">
 </head>
-
 <body>
 <?$APPLICATION->ShowPanel()?>
-<!-- wrap -->
 <div class="wrap">
-    <!-- header -->
     <header class="header">
         <div class="inner-wrap">
             <div class="logo-block"><a href="" class="logo">Мебельный магазин</a>
@@ -38,7 +35,7 @@ $asset = Asset::getInstance();
                 <?if(date('H') >= 9 && date('H') <= 18){?>
                 <a href="tel:84952128506" class="phone">8 (495) 212-85-06</a>
                 <?}else{?>
-                <a href="mailto:store@store.ru" class="phone">store@store.ru</a>
+                    <a href="mailto:store@store.ru" class="phone">store@store.ru</a>
                 <? } ?>
                 <div class="shedule">время работы с 9-00 до 18-00</div>
             </div>
@@ -159,6 +156,6 @@ $asset = Asset::getInstance();
                 <div class="cnt">
                     <?if(!CSite::InDir('/index.php')){?>
                     <header>
-                        <h1>Заголовок страницы</h1>
+                        <h1><?$APPLICATION->ShowTitle(false)?></h1>
                     </header>
                     <? } ?>

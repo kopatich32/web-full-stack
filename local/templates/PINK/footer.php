@@ -7,7 +7,8 @@ use Bitrix\Main\Localization\Loc;
 <!-- side -->
 <div class="side">
     <!-- side menu -->
-    <div class="side-block side-menu">
+   <?/*
+ <div class="side-block side-menu">
         <div class="title-block">Навигация</div>
         <div class="menu-block">
             <ul>
@@ -35,6 +36,24 @@ use Bitrix\Main\Localization\Loc;
             </ul>
         </div>
     </div>
+*/?>
+
+    <?$APPLICATION->IncludeComponent("bitrix:menu", "left-menu", Array(
+        "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
+        "CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
+        "DELAY" => "N",	// Откладывать выполнение шаблона меню
+        "MAX_LEVEL" => "1",	// Уровень вложенности меню
+        "MENU_CACHE_GET_VARS" => array(	// Значимые переменные запроса
+            0 => "",
+        ),
+        "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
+        "MENU_CACHE_TYPE" => "N",	// Тип кеширования
+        "MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
+        "ROOT_MENU_TYPE" => "left",	// Тип меню для первого уровня
+        "USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+    ),
+        false
+    );?>
     <!-- /side menu -->
     <!-- side anonse -->
     <div class="side-block side-anonse">
