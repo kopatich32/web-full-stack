@@ -7,7 +7,7 @@ use Bitrix\Main\Localization\Loc;
 <!-- side -->
 <div class="side">
     <!-- side menu -->
-   <?/*
+
  <div class="side-block side-menu">
         <div class="title-block">Навигация</div>
         <div class="menu-block">
@@ -36,7 +36,7 @@ use Bitrix\Main\Localization\Loc;
             </ul>
         </div>
     </div>
-*/?>
+
 
     <?$APPLICATION->IncludeComponent("bitrix:menu", "left-menu", Array(
         "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
