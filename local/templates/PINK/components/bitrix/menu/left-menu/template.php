@@ -6,7 +6,8 @@
 //TODO phpdoc
 ?>
 
-<?if (!empty($arResult)){?>
+<?
+if (!empty($arResult)){?>
 <div class="side-block side-menu">
     <div class="title-block">Навигация</div>
     <div class="menu-block">
