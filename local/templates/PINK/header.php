@@ -2,6 +2,7 @@
 use Bitrix\Main\Page\Asset,
     Bitrix\Main\Localization\Loc;
 $asset = Asset::getInstance();
+global $APPLICATION;
 ?>
 <!DOCTYPE html>
 <html lang="<?=LANGUAGE_ID?>">
