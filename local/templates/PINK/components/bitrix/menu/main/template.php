@@ -11,7 +11,7 @@
                         foreach($arResult as $arItem){
                         if ($previousLevel && $arItem["DEPTH_LEVEL"] < $previousLevel){
                             echo str_repeat("</ul></li>", ($previousLevel - $arItem["DEPTH_LEVEL"]));
-                         }
+                           }
                          if ($arItem["IS_PARENT"]){?>
                         <li>
                             <a href="<?=$arItem['LINK']?>"><?=$arItem["TEXT"]?></a>

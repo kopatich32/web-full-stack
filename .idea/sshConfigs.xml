@@ -2,7 +2,7 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig authType="PASSWORD" host="192.168.92.105" id="aa26c732-f4b7-4145-968e-47e4412096e8" port="22" customName="lala" nameFormat="CUSTOM" username="bitrix" useOpenSSHConfig="true">
+      <sshConfig authType="PASSWORD" host="192.168.92.106" id="aa26c732-f4b7-4145-968e-47e4412096e8" port="22" customName="lala" nameFormat="CUSTOM" username="bitrix" useOpenSSHConfig="true">
         <option name="customName" value="lala" />
       </sshConfig>
     </configs>
