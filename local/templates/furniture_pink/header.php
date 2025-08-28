@@ -4,23 +4,21 @@ use Bitrix\Main\Page\Asset;
 $asset = Asset::getInstance();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?=LANGUAGE_ID?>">
 <head>
-
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <?$APPLICATION->ShowHead();?>
     <?
     $asset->addCss(SITE_TEMPLATE_PATH.'/assets/css/main.css');
     $asset->addCss(SITE_TEMPLATE_PATH.'/assets/css/main.css');
+    $asset->addCss(SITE_TEMPLATE_PATH.'/css/fonts.css');
+
     $asset->addJs(SITE_TEMPLATE_PATH . '/assets/phone.js');
     $asset->addJs(SITE_TEMPLATE_PATH . '/assets/script.js');
     $asset->addJs(SITE_TEMPLATE_PATH . '/assets/navbar.js');
     $asset->addString('<link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap">')
     ?>
-
-
-    <?$APPLICATION->ShowHead();?>
     <title><?$APPLICATION->ShowTitle()?></title>
 </head>
 <body>
@@ -28,7 +26,7 @@ $asset = Asset::getInstance();
 
 <header class="header">
     <div>
-        <h1 class="mains">NEWS</h1>
+        <h1 class="mains"><?$APPLICATION->ShowTitle(false)?></h1>
     </div>
     <ol id="menu" class="ol1">
         <li><a class="li1" href="">
@@ -79,10 +77,11 @@ $asset = Asset::getInstance();
     </ol>
     <div class="nav">
         <ul>
+            <li>
             <a href="index.html">
-                <li><h3>Home
-            </a></h3></li>
+                <h3>Home</h3>
             </a>
+            </li>
             <li><a href="#fy"><h3>For you</h3></a></li>
             <li><h3>Following</h3></li>
             <li><h3>World</h3></li>
