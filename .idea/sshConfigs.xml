@@ -5,6 +5,12 @@
       <sshConfig authType="PASSWORD" host="192.168.92.106" id="aa26c732-f4b7-4145-968e-47e4412096e8" port="22" customName="lala" nameFormat="CUSTOM" username="bitrix" useOpenSSHConfig="true">
         <option name="customName" value="lala" />
       </sshConfig>
+      <sshConfig authType="PASSWORD" host="192.168.92.108" id="fed7c3d4-80f8-4b2c-a637-d94d5a749062" port="22" customName="женин" nameFormat="CUSTOM" username="bitrix" useOpenSSHConfig="true">
+        <option name="customName" value="женин" />
+      </sshConfig>
+      <sshConfig authType="PASSWORD" host="192.168.92.107" id="d2776326-d852-427f-8db1-a0d2be4842fa" port="22" customName="Максим" nameFormat="CUSTOM" username="bitrix" useOpenSSHConfig="true">
+        <option name="customName" value="Максим" />
+      </sshConfig>
     </configs>
   </component>
 </project>

@@ -9,6 +9,20 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="54feaff5-fa85-4cb1-a215-2cc2ca16c532" name="Женя">
+        <fileTransfer rootFolder="/home/bitrix/www/" accessType="SFTP" host="192.168.92.108" port="22" sshConfigId="fed7c3d4-80f8-4b2c-a637-d94d5a749062" sshConfig="женин">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="b3058d42-0280-4be2-b148-61a01de220ae" name="Максим">
+        <fileTransfer rootFolder="/home/bitrix/www/" accessType="SFTP" host="192.168.92.107" port="22" sshConfigId="d2776326-d852-427f-8db1-a0d2be4842fa" sshConfig="Максим">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

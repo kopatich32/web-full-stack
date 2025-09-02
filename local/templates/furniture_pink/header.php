@@ -1,32 +1,34 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 use Bitrix\Main\Page\Asset;
-
-$asset = Asset::getInstance();
 ?>
+
+
 <!DOCTYPE html>
 <html lang="<?=LANGUAGE_ID?>">
 <head>
+
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?$APPLICATION->ShowHead();?>
-    <?
-    $asset->addCss(SITE_TEMPLATE_PATH.'/assets/css/main.css');
-    $asset->addCss(SITE_TEMPLATE_PATH.'/assets/css/main.css');
-    $asset->addCss(SITE_TEMPLATE_PATH.'/css/fonts.css');
 
-    $asset->addJs(SITE_TEMPLATE_PATH . '/assets/phone.js');
-    $asset->addJs(SITE_TEMPLATE_PATH . '/assets/script.js');
-    $asset->addJs(SITE_TEMPLATE_PATH . '/assets/navbar.js');
-    $asset->addString('<link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap">')
+    <?php
+    Asset::getInstance()->addCss(SITE_TEMPLATE_PATH.'/assets/css/main.css');
+    Asset::getInstance()->addCss(SITE_TEMPLATE_PATH.'/assets/css/main.css');
+    Asset::getInstance()->addString('<link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap">')
     ?>
+
+
+    <?$APPLICATION->ShowHead();?>
     <title><?$APPLICATION->ShowTitle()?></title>
 </head>
 <body>
+
+    <div id="panel">
         <?$APPLICATION->ShowPanel();?>
+    </div>
 
 <header class="header">
     <div>
-        <h1 class="mains"><?$APPLICATION->ShowTitle(false)?></h1>
+        <div class="mains">NEWS</div>
     </div>
     <ol id="menu" class="ol1">
         <li><a class="li1" href="">
@@ -75,21 +77,23 @@ $asset = Asset::getInstance();
             </ol>
         </li>
     </ol>
-    <div class="nav">
-        <ul>
-            <li>
-            <a href="index.html">
-                <h3>Home</h3>
-            </a>
-            </li>
-            <li><a href="#fy"><h3>For you</h3></a></li>
-            <li><h3>Following</h3></li>
-            <li><h3>World</h3></li>
-            <a href="aboutus.html">
-                <li id="right"><h3>About us</h3></li>
-            </a>
-        </ul>
-    </div>
+
+    <?$APPLICATION->IncludeComponent(
+        "bitrix:menu",
+        "News-Nav",
+        Array(
+            "ALLOW_MULTI_SELECT" => "N",
+            "CHILD_MENU_TYPE" => "left",
+            "DELAY" => "N",
+            "MAX_LEVEL" => "1",
+            "MENU_CACHE_GET_VARS" => array(""),
+            "MENU_CACHE_TIME" => "3600",
+            "MENU_CACHE_TYPE" => "N",
+            "MENU_CACHE_USE_GROUPS" => "Y",
+            "ROOT_MENU_TYPE" => "top",
+            "USE_EXT" => "N"
+        )
+    );?>
     <div class="rightpanel">
         <input id="mobsearch" class="rpl" type="text" placeholder="Search">
         <svg class="rpl" width="51" height="44" viewBox="0 0 51 44" fill="none"
@@ -106,133 +110,4 @@ $asset = Asset::getInstance();
         </a>
     </div>
 </header>
-<section class="tssection">
-    <h2 class="mains">Top stories</h2>
-    <a href="topstory.html">
-        <div class="tssqr">
-            <img class="imgts" src="<?=SITE_TEMPLATE_PATH?>/assets/resources/image 1.png" alt="">
-            <div class="tstext">
-                <h3>The one question from Donald Trump that could sway many American voters in swing states.</h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean
-                    massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec
-                    quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-                    Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-                <p>2 hours ago / by Sfsafa</p>
-            </div>
-        </div>
-    </a>
-    <div class="tssqr">
-        <img class="imgts" id="tssqimg" src="<?=SITE_TEMPLATE_PATH?>/assets/resources/image 2.png" alt="">
-        <div class="tstext">
-            <h3>Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.</h3>
-            <p>Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper
-                nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
-                enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus
-                varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. </p>
-            <p>10 hours ago / by Najdsksd</p>
-        </div>
-    </div>
-    <div class="tssqr" id="tssqr">
-        <img class="imgts" id="tssqimg" src="<?=SITE_TEMPLATE_PATH?>/assets/resources/image 3.png" alt="">
-        <div class="tstext">
-            <h3>Maecenas nec odio et ante tincidunt tempus.</h3>
-            <p>Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus
-                tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat,
-                leo eget bibendum sodales, augue velit cursus nunc.</p>
-            <p>24 hours ago / by Hskdmak</p>
-        </div>
-    </div>
-</section>
-<section class="foryou">
-    <div class="foryouh2">
-        <h2 id="fy">For You</h2>
-        <p>Recommended based on your interests</p>
-    </div>
-</section>
-<div class="foryouall">
-    <section class="foryouin">
-        <div class="bigrect">
-            <img class="bigrecimg" src="<?=SITE_TEMPLATE_PATH?>/assets/resources/Rectangle 20.png" alt="">
-            <div class="bigrecttxt">
-                <h2>Sed fringilla mauris sit amet nibh.</h2>
-                <p>Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit
-                    eget, imperdiet nec, imperdiet iaculis, ipsum.</p>
-            </div>
-            <p class="bigrectp">15 hours ago / by dawfw</p>
-        </div>
-        <div class="smrect">
-            <img class="smrectimg" src="<?=SITE_TEMPLATE_PATH?>/assets/resources/Rectangle 24.png" alt="">
-            <div>
-                <div class="smrecttxt">
-                    <h2>Sed fringilla mauris sit amet nibh.</h2>
-                    <p>Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor,
-                        suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p>
-                </div>
-                <p class="smrectp">15 hours ago / by dawfw</p>
-            </div>
-        </div>
-        <div class="smrect2">
-            <img class="smrectimg" src="<?=SITE_TEMPLATE_PATH?>/assets/resources/Rectangle 25.png" alt="">
-            <div>
-                <div class="smrecttxt">
-                    <h2>Sed fringilla mauris sit amet nibh.</h2>
-                    <p>Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor,
-                        suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p>
-                </div>
-                <p class="smrectp">15 hours ago / by dawfw</p>
-            </div>
-        </div>
-        <div class="smrect3">
-            <img class="smrectimg" src="<?=SITE_TEMPLATE_PATH?>/assets/resources/image 4.png" alt="">
-            <div>
-                <div class="smrecttxt">
-                    <h2>Sed fringilla mauris sit amet nibh.</h2>
-                    <p>Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor,
-                        suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p>
-                </div>
-                <p class="smrectp">15 hours ago / by dawfw</p>
-            </div>
-        </div>
-        <div class="smrect4">
-            <img class="smrectimg" src="<?=SITE_TEMPLATE_PATH?>/assets/resources/Rectangle 27.png" alt="">
-            <div>
-                <div class="smrecttxt">
-                    <h2>Sed fringilla mauris sit amet nibh.</h2>
-                    <p>Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor,
-                        suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p>
-                </div>
-                <p class="smrectp">15 hours ago / by dawfw</p>
-            </div>
-        </div>
-
-        <div class="bigrect2">
-            <img class="bigrecimg" src="<?=SITE_TEMPLATE_PATH?>/assets/resources/Rectangle 26.png" alt="">
-            <div class="bigrecttxt">
-                <h2>Sed fringilla mauris sit amet nibh.</h2>
-                <p>Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit
-                    eget, imperdiet nec, imperdiet iaculis, ipsum.</p>
-            </div>
-            <p class="bigrectp">15 hours ago / by dawfw</p>
-        </div>
-    </section>
-</div>
-<section class="back">
-    <h1 id="back"><a href="">Back</a></h1>
-</section>
-<div class="modal-window hidden">
-    <button class="btn--close-modal-window">&times;</button>
-    <h2 class="modal__header">
-        Login
-    </h2>
-    <form class="modal__form">
-
-        <label>Email</label>
-        <input type="email"/>
-        <label>Номер телефона</label>
-        <input type="text" class="phone"/>
-        <label for="Password">Пароль:</label>
-        <input type="password" id="Password" placeholder="Пароль">
-        <button class="btn">Далее &rarr;</button>
-    </form>
-</div>
-<div class="overlay hidden"></div>
+<main>

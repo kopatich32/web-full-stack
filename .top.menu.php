@@ -1,53 +1,39 @@
 <?
 $aMenuLinks = Array(
 	Array(
-		"Компания", 
-		"company/", 
+		"Home",
+		"/",
 		Array(), 
-		Array("DESCRIPTION"=>"LALA"), 
-		"" 
-	),
-	Array(
-		"Мои новости", 
-		"news/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Продукция", 
-		"products/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Услуги", 
-		"services/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Партнёрам", 
-		"partneram/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Тестовый раздел", 
-		"/test/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Отзывы",
-		"/reviews/",
 		Array(),
-		Array(),
-		""
-	)
+		"" 
+	),
+	Array(
+		"For You",
+		"for-you/",
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Following",
+		"following/",
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"World",
+		"world/",
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"About us",
+		"about/",
+		Array(), 
+		Array(), 
+		"" 
+	),
 );
 ?>
