@@ -15,6 +15,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+Diploma\Helper::setViewCount($arResult['VARIABLES']['ELEMENT_ID'], $arResult['VARIABLES']['SECTION_ID']);
+$res = Diploma\Helper::getTopNews($USER->GetId());
+
+\Bitrix\Main\Diag\Debug::writeToFile($res,'' , '/_res.log');
 
 $ElementID = $APPLICATION->IncludeComponent(
 	"bitrix:news.detail",

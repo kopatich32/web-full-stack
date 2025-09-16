@@ -28,7 +28,7 @@ use Bitrix\Main\Page\Asset;
 
 <header class="header">
     <div>
-        <div class="mains">NEWS</div>
+		<a href="/"><div class="mains">NEWS</div></a>
     </div>
     <ol id="menu" class="ol1">
         <li><a class="li1" href="">
