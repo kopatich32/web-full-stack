@@ -1,19 +1,25 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("test");
-?><?$APPLICATION->IncludeComponent(
-	"bitrix:menu",
-	"",
-	Array(
-		"ALLOW_MULTI_SELECT" => "N",
-		"CHILD_MENU_TYPE" => "left",
-		"DELAY" => "N",
-		"MAX_LEVEL" => "1",
-		"MENU_CACHE_GET_VARS" => array(""),
-		"MENU_CACHE_TIME" => "3600",
-		"MENU_CACHE_TYPE" => "N",
-		"MENU_CACHE_USE_GROUPS" => "Y",
-		"ROOT_MENU_TYPE" => "left",
-		"USE_EXT" => "N"
-	)
-);?><br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+?>
+
+<?
+
+$requestPath = 'https://api.kinopoisk.dev/';
+$fullPath = 'https://api.kinopoisk.dev/v1.4/movie/61237';
+$token = 'Z494M8V-KPTMCEX-HWXWPEM-6FSWX7W';
+
+$headers = [
+    "X-API-KEY: Z494M8V-KPTMCEX-HWXWPEM-6FSWX7W",
+    "accept: application/json"];
+
+
+$ch = curl_init($fullPath);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HEADER, $headers);
+$html = curl_exec($ch);
+curl_close($ch);
+
+echo '<pre>'. print_r($html,true) .'</pre>';
+?>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
