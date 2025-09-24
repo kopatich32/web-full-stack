@@ -12,6 +12,8 @@
   </component>
   <component name="PhpIncludePathManager">
     <include_path>
+      <path value="$PROJECT_DIR$/../itesc.ru/bitrix/components" />
+      <path value="$PROJECT_DIR$/../itesc.ru/bitrix/modules" />
       <path value="$PROJECT_DIR$/../Bitrix_Template_Core/bitrix" />
     </include_path>
   </component>

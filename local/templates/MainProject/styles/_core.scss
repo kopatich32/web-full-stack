@@ -1,0 +1,91 @@
+@use 'sass:math' as *;
+@use './functions' as *;
+@use './mixins' as *;
+
+body{
+    position: relative;
+    
+    background-color: var(--colorDark);
+    color: var(--colorLight);
+
+    font-size: fluid(20,14);
+}
+
+body {
+    input:not([type="submit"]):not([type="button"]):not([type="reset"]),
+    textarea,
+    select {
+        font: inherit;
+        color: inherit;
+        
+        &::placeholder {
+            color: inherit;
+            opacity: 0.7;
+        }
+        
+        // Для Firefox
+        &::-moz-placeholder {
+            color: inherit;
+            opacity: 0.7;
+        }
+        
+        // Для Microsoft Edge
+        &::-ms-input-placeholder {
+            color: inherit;
+            opacity: 0.7;
+        }
+    }
+}
+
+h1,h2,h3,h4,h5,h6{
+    color: var(--colorAccentAlt);
+    font-family: var(--fontAccent);
+    font-weight: normal;
+};
+
+h1, .h1{
+    font-size: fluid(45,20);
+}
+
+h2, .h2{
+    font-size: fluid(30,18);
+}
+
+label{
+    font-size: fluid(20,15);
+    font-family: var(--fontAccent);
+    font-weight: normal;
+    color: var(--colorAccentAlt);
+}
+
+input, textarea {
+    padding: to-rem(10);
+    box-sizing: border-box;
+
+    margin: to-rem(10) 0;
+
+    background-color: transparent;
+    border: to-rem(2) var(--colorAccentAlt) solid;
+    border-radius: var(--borderMain);
+
+    color: var(--colorLight);
+
+    &:focus,
+    &:hover,
+    &:active {
+        border: to-rem(2) var(--colorAccent) solid;
+        background-color: transparent;
+    }
+
+    &:focus {
+        outline: to-rem(2) var(--colorAccent) solid;
+        outline-offset: 5px;
+    }
+}
+
+input::placeholder{
+    color: var(--colorLightAlt2);
+    font-size: fluid(15,10);
+    font-family: var(--fontMain);
+    font-weight: bold;
+}

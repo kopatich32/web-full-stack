@@ -9,7 +9,7 @@ global $APPLICATION;
 <head>
     <title><?$APPLICATION->ShowTitle()?></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?
@@ -89,15 +89,19 @@ global $APPLICATION;
         false
     );?>
     <?if(!CSite::InDir('/index.php')){?>
-        <!-- breadcrumbs -->
-        <div class="breadcrumbs-box">
-        <div class="inner-wrap">
-            <a href="">Главная</a>
-            <a href="">Мебель</a>
-            <span>Выставки и события</span>
-        </div>
-    </div>
-    <!-- /breadcrumbs -->
+
+        <?$APPLICATION->IncludeComponent(
+            "bitrix:breadcrumb",
+            "breadcrumbs",
+            array(
+                "PATH" => "",
+                "SITE_ID" => "s1",
+                "START_FROM" => "0",
+                "COMPONENT_TEMPLATE" => "breadcrumbs"
+            ),
+            false
+        );
+        ?>
     <? } ?>
     <!-- page -->
     <div class="page">
