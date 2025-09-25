@@ -10,6 +10,10 @@ if(file_exists(__DIR__ .'/helper.php')) {
 	require_once(__DIR__ .'/helper.php');
 }
 
+if(file_exists(__DIR__ .'/constants.php')) {
+	require_once(__DIR__ .'/constants.php');
+}
+
 
 Bitrix\Main\Loader::registerAutoLoadClasses(
 	null,

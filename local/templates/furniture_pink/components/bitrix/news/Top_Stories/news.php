@@ -59,7 +59,7 @@ $APPLICATION->IncludeComponent(
 ?>
 <br />
 <?php
-endif;
+endif;?><?
 $APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"",
