@@ -1,11 +1,11 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Новости");
-// Проверяем, что это главная страница И НЕ детальная страница новости:
-$isDetailPage = (strpos($dynamicPage, 'detail.php') !== false) ||
-    isset($_REQUEST['ELEMENT_ID']) ||
-    isset($_REQUEST['ID']);
-?> <?$APPLICATION->IncludeComponent(
+global $USER;
+use Diploma\Helper;
+$APPLICATION->SetTitle("Новости");?>
+
+<?if($USER->IsAuthorized()){?>
+<?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"top-news",
 	Array(
@@ -29,7 +29,10 @@ $isDetailPage = (strpos($dynamicPage, 'detail.php') !== false) ||
 		"DISPLAY_PICTURE" => "Y",
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
-		"FIELD_CODE" => array(0=>"",1=>"",),
+		"FIELD_CODE" => array(
+			0 => "SORT",
+			1 => "",
+		),
 		"FILTER_NAME" => "userNews",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => NEWS_IBLOCK_ID,
@@ -38,6 +41,7 @@ $isDetailPage = (strpos($dynamicPage, 'detail.php') !== false) ||
 		"INCLUDE_SUBSECTIONS" => "Y",
 		"MESSAGE_404" => "",
 		"NEWS_COUNT" => "1000",
+		"TOP_NEWS_COUNT" => "3",
 		"PAGER_BASE_LINK_ENABLE" => "N",
 		"PAGER_DESC_NUMBERING" => "N",
 		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
@@ -62,19 +66,27 @@ $isDetailPage = (strpos($dynamicPage, 'detail.php') !== false) ||
 		"SORT_ORDER2" => "ASC",
 		"STRICT_SECTION_CHECK" => "N"
 	)
-);?> <?php
-// Проверяем, что это главная страница И НЕ детальная страница новости
+);?>
+		<? }
 
-if(!$isDetailPage) {
-    ?> <section class="foryou">
-<div class="foryouh2">
-	<h2 id="fy">For You</h2>
-	<p>
-		 Recommended based on your interests
-	</p>
-</div>
- </section>
-<?}?> <?$APPLICATION->IncludeComponent(
+$section = Helper::getMostViewedSectionData();
+?>
+<section class="foryou">
+	<div class="foryouh2">
+		<h2 id="fy">For You</h2>
+		<h2><?=$section['SECTION_NAME']?></h2>
+		<p>
+			 Recommended based on your interests
+		</p>
+	</div>
+</section>
+<?
+global $mostViewedNewsSection;
+$mostViewedNewsSection = [
+		'SECTION_ID' => $section['SECTION_ID'],
+]
+?>
+	<?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"for-you",
 	Array(
@@ -110,7 +122,7 @@ if(!$isDetailPage) {
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
 		"FIELD_CODE" => array(0=>"",1=>"",),
-		"FILTER_NAME" => "",
+		"FILTER_NAME" => "mostViewedNewsSection",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => NEWS_IBLOCK_ID,
 		"IBLOCK_TYPE" => "news",
@@ -156,6 +168,4 @@ if(!$isDetailPage) {
 		"USE_SEARCH" => "N",
 		"USE_SHARE" => "N"
 	)
-);?> <section class="back">
-<h1 id="back"><a href="">Back</a></h1>
- </section><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

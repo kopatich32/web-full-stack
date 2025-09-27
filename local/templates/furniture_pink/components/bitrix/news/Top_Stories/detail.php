@@ -16,7 +16,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 Diploma\Helper::setViewCount($arResult['VARIABLES']['ELEMENT_ID'], $arResult['VARIABLES']['SECTION_ID']);
-$res = Diploma\Helper::getTopNews($USER->GetId());
+$res = Diploma\Helper::getTopNews();
 
 \Bitrix\Main\Diag\Debug::writeToFile($res,'' , '/_res.log');
 

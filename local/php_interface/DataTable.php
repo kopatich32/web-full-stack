@@ -3,8 +3,8 @@ namespace Bitrix\News;
 
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\ORM\Data\DataManager;
-use Bitrix\Main\ORM\Fields\DatetimeField;
 use Bitrix\Main\ORM\Fields\IntegerField;
+use Bitrix\Main\ORM\Fields\TextField;
 
 /**
  * Class DataTable
@@ -16,7 +16,8 @@ use Bitrix\Main\ORM\Fields\IntegerField;
  * <li> NEWS_ID int mandatory
  * <li> SECTION_ID int mandatory
  * <li> VIEW_COUNT int mandatory
- * <li> CREATE_DATE datetime mandatory
+ * <li> SECTION_CODE text optional
+ * <li> SECTION_NAME text optional
  * </ul>
  *
  * @package Bitrix\News
@@ -76,6 +77,18 @@ class DataTable extends DataManager
 				[
 					'required' => true,
 					'title' => Loc::getMessage('DATA_ENTITY_VIEW_COUNT_FIELD'),
+				]
+			),
+			new TextField(
+				'SECTION_CODE',
+				[
+					'title' => Loc::getMessage('DATA_ENTITY_SECTION_CODE_FIELD'),
+				]
+			),
+			new TextField(
+				'SECTION_NAME',
+				[
+					'title' => Loc::getMessage('DATA_ENTITY_SECTION_NAME_FIELD'),
 				]
 			),
 		];

@@ -23,6 +23,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="cd0473d3-16d9-4f84-a63e-b65c6365aa23" name="mobile">
+        <fileTransfer rootFolder="/home/bitrix/www/" accessType="SFTP" host="192.168.43.121" port="22" sshConfigId="0b6637e9-8f64-4888-a71c-ea4d41b01300" sshConfig="mobile">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

@@ -3,6 +3,7 @@
 namespace Diploma;
 
 use Bitrix\Main\Application;
+use Bitrix\Main\Diag\Debug;
 use Bitrix\Main\Entity\DataManager;
 use Bitrix\Main\ORM\Fields\IntegerField;
 use Bitrix\Main\ORM\Fields\StringField;
@@ -20,8 +21,10 @@ class Helper
 		'NEWS_ID',
 		'SECTION_ID',
 		'VIEW_COUNT',
+		'SECTION_CODE',
+		'SECTION_NAME',
 	];
-	public static function setViewCount($newsId, $sectionId)
+	public static function setViewCount($newsId, $sectionId = 0, $sectionCode = '', $sectionName = '')
 	{
 		global $APPLICATION;
 		global $USER;
@@ -34,15 +37,27 @@ class Helper
 			],
 			'select' => self::$tableColumns,
 		])->fetch();
-		//\Bitrix\Main\Diag\Debug::writeToFile($hasUserData,'' , '/_res.log');
+//		Debug::writeToFile($hasUserData,'', '/_res.log');
 
 		if($hasUserData['USER_ID'] && $hasUserData['NEWS_ID'])
 		{
-			DataTable::update($hasUserData['ID'],
-				[
-					'VIEW_COUNT' => $hasUserData['VIEW_COUNT'] + 1,
-				]
-			);
+			$updateData = [
+				'VIEW_COUNT' => $hasUserData['VIEW_COUNT'] + 1,
+			];
+			if($sectionId > 0 && $hasUserData['SECTION_ID'] == 0)
+			{
+				$updateData['SECTION_ID'] = $sectionId;
+			}
+
+			if($sectionCode)
+			{
+				$updateData['SECTION_CODE'] = $sectionCode;
+			}
+			if($sectionName)
+			{
+				$updateData['SECTION_NAME'] = $sectionName;
+			}
+			DataTable::update($hasUserData['ID'], $updateData);
 		}
 		else
 		{
@@ -56,28 +71,39 @@ class Helper
 	}
 
 
-	public static function getTopNews ($userId) {
+	public static function getTopNews () {
 		global $USER;
 		$topNewsArr = [];
 		$userId = $USER->GetId();
 		$getUserData = DataTable::getList([
+			'order' => ['VIEW_COUNT' => 'DESC'],
 			'filter' => [
 				'USER_ID' => $userId,
 			],
 			'select' => self::$tableColumns,
 		])->fetchAll();
-		usort($getUserData, function($a, $b){
-			return ($b['VIEW_COUNT'] - $a['VIEW_COUNT']);
-		});
-
 		foreach($getUserData as  $data)
 		{
 			$topNewsArr[] = [
 				'NEWS_ID' => $data['NEWS_ID'],
 				'VIEWS' => $data['VIEW_COUNT'],
+				'SECTION_ID' => $data['SECTION_ID'],
+				'SECTION_CODE' => $data['SECTION_CODE'],
+				'SECTION_NAME' => $data['SECTION_NAME'],
 			];
 		}
 		return $topNewsArr;
+	}
+
+	public static function getMostViewedSectionData () {
+		$newsData = self::getTopNews();
+
+		if($newsData) {
+			$section = reset($newsData);
+		}
+//				Debug::writeToFile($section,'', '/_res.log');
+
+		return $section;
 	}
 	public static function createTableForNews() //TODO только разово для создания таблицы
 	{
@@ -115,12 +141,18 @@ class Helper
 						'column_name' => 'VIEW_COUNT'
 					]
 				),
-				'CREATE_DATE' => new DatetimeField(
-					'CREATE_DATE',
+				'SECTION_CODE' => new StringField(
+					'SECTION_CODE',
 					[
-						'column_name' => 'CREATE_DATE'
+						'column_name' => 'SECTION_CODE'
 					]
-				)
+				),'SECTION_NAME' => new StringField(
+					'SECTION_NAME',
+					[
+						'column_name' => 'SECTION_NAME'
+					]
+				),
+
 			],
 			['ID'],
 			['ID']

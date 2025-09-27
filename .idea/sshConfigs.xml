@@ -11,6 +11,9 @@
       <sshConfig authType="PASSWORD" host="192.168.92.107" id="d2776326-d852-427f-8db1-a0d2be4842fa" port="22" customName="Максим" nameFormat="CUSTOM" username="bitrix" useOpenSSHConfig="true">
         <option name="customName" value="Максим" />
       </sshConfig>
+      <sshConfig authType="PASSWORD" host="192.168.43.121" id="0b6637e9-8f64-4888-a71c-ea4d41b01300" port="22" customName="mobile" nameFormat="CUSTOM" username="bitrix" useOpenSSHConfig="true">
+        <option name="customName" value="mobile" />
+      </sshConfig>
     </configs>
   </component>
 </project>
