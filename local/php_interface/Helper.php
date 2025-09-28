@@ -37,7 +37,6 @@ class Helper
 			],
 			'select' => self::$tableColumns,
 		])->fetch();
-//		Debug::writeToFile($hasUserData,'', '/_res.log');
 
 		if($hasUserData['USER_ID'] && $hasUserData['NEWS_ID'])
 		{
@@ -101,7 +100,6 @@ class Helper
 		if($newsData) {
 			$section = reset($newsData);
 		}
-//				Debug::writeToFile($section,'', '/_res.log');
 
 		return $section;
 	}

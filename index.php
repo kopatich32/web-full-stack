@@ -4,7 +4,9 @@ global $USER;
 use Diploma\Helper;
 $APPLICATION->SetTitle("Новости");?>
 
-<?if($USER->IsAuthorized()){?>
+<?
+$isAuth = $USER->IsAuthorized();
+if($isAuth){?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"top-news",
@@ -33,7 +35,7 @@ $APPLICATION->SetTitle("Новости");?>
 			0 => "SORT",
 			1 => "",
 		),
-		"FILTER_NAME" => "userNews",
+		"FILTER_NAME" => "",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => NEWS_IBLOCK_ID,
 		"IBLOCK_TYPE" => "news",
@@ -71,15 +73,24 @@ $APPLICATION->SetTitle("Новости");?>
 
 $section = Helper::getMostViewedSectionData();
 ?>
-<section class="foryou">
-	<div class="foryouh2">
-		<h2 id="fy">For You</h2>
-		<h2><?=$section['SECTION_NAME']?></h2>
-		<p>
-			 Recommended based on your interests
-		</p>
-	</div>
-</section>
+
+<?if($isAuth){?>
+	<section class="foryou">
+		<div class="foryouh2">
+			<h2 id="fy">For You</h2>
+			<h2><?=$section['SECTION_NAME']?></h2>
+			<p>
+				Recommended based on your interests
+			</p>
+		</div>
+	</section>
+<?} else {?>
+	<section class="foryou">
+		<div class="foryouh2">
+			<h2 id="fy">NEWS</h2>
+		</div>
+	</section>
+<? } ?>
 <?
 global $mostViewedNewsSection;
 $mostViewedNewsSection = [
@@ -122,7 +133,7 @@ $mostViewedNewsSection = [
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
 		"FIELD_CODE" => array(0=>"",1=>"",),
-		"FILTER_NAME" => "mostViewedNewsSection",
+		"FILTER_NAME" => $isAuth ? "mostViewedNewsSection" : '',
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => NEWS_IBLOCK_ID,
 		"IBLOCK_TYPE" => "news",

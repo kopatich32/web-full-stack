@@ -878,3 +878,8 @@ h3:hover{
         margin-right: 0;
     }
 }
+
+
+.slide-nav a.selected {
+    color: var(--primary);
+}

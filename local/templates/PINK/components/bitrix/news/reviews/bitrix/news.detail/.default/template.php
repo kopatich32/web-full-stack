@@ -11,7 +11,6 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-//\Bitrix\Main\Diag\Debug::writeToFile($arResult,'', '/_res.log');
 ?>
 <div class="review-block">
     <div class="review-text">

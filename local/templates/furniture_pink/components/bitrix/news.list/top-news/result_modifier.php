@@ -10,7 +10,8 @@ usort($getTopNews, function($a, $b){
 
 $getTopNews = array_column($getTopNews, 'NEWS_ID');
 
-foreach($arResult['ITEMS'] as $key => $val) {
+foreach($arResult['ITEMS'] as $key => &$val) {
+	$val['RESIZED_IMG'] = CFile::ResizeImageGet($val['PREVIEW_PICTURE']['ID'], ['width' => 400, 'height' => 400])['src'];
 	$res['ITEMS'][$val['ID']] = $val;
 }
 unset($arResult['ITEMS']);
