@@ -4,10 +4,6 @@
 global $USER;
 $getTopNews = \Diploma\Helper::getTopNews();
 
-usort($getTopNews, function($a, $b){
-	return ($b['VIEW_COUNT'] - $a['VIEW_COUNT']);
-});
-
 $getTopNews = array_column($getTopNews, 'NEWS_ID');
 
 foreach($arResult['ITEMS'] as $key => &$val) {

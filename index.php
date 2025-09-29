@@ -2,11 +2,10 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 global $USER;
 use Diploma\Helper;
-$APPLICATION->SetTitle("Новости");?>
+$APPLICATION->SetTitle("Новости");
 
-<?
-$isAuth = $USER->IsAuthorized();
-if($isAuth){?>
+
+$isAuth = $USER->IsAuthorized();?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"top-news",
@@ -69,12 +68,9 @@ if($isAuth){?>
 		"STRICT_SECTION_CHECK" => "N"
 	)
 );?>
-		<? }
-
+<?
 $section = Helper::getMostViewedSectionData();
-?>
-
-<?if($isAuth){?>
+	if($isAuth){?>
 	<section class="foryou">
 		<div class="foryouh2">
 			<h2 id="fy">For You</h2>
