@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="2fd2b3a8-108e-4980-8beb-b597a8cb51f3" name="bitrix">
-        <fileTransfer rootFolder="/home/bitrix/www/" accessType="SFTP" host="192.168.43.121" port="22" sshConfigId="aa26c732-f4b7-4145-968e-47e4412096e8" sshConfig="lala">
+        <fileTransfer rootFolder="/home/bitrix/www/" accessType="SFTP" host="192.168.92.110" port="22" sshConfigId="aa26c732-f4b7-4145-968e-47e4412096e8" sshConfig="lala">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
@@ -17,7 +17,7 @@
         </fileTransfer>
       </webServer>
       <webServer id="b3058d42-0280-4be2-b148-61a01de220ae" name="Максим">
-        <fileTransfer rootFolder="/home/bitrix/www/" accessType="SFTP" host="192.168.92.107" port="22" sshConfigId="d2776326-d852-427f-8db1-a0d2be4842fa" sshConfig="Максим">
+        <fileTransfer rootFolder="/home/bitrix/www/" accessType="SFTP" host="192.168.92.105" port="22" sshConfigId="d2776326-d852-427f-8db1-a0d2be4842fa" sshConfig="Максим">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
